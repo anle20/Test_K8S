@@ -1,0 +1,27 @@
+Cau 1:
+1. 
+NAME           STATUS   ROLES                  AGE   VERSION   INTERNAL-IP   EXTERNAL-IP   OS-IMAGE             KERNEL-VERSION   CONTAINER-RUNTIME
+kube-master    Ready    control-plane,master   34d   v1.21.0   10.148.0.8    <none>        Ubuntu 18.04.5 LTS   5.4.0-1058-gcp   docker://20.10.7
+kube-worker1   Ready    <none>                 34d   v1.21.0   10.148.0.9    <none>        Ubuntu 18.04.5 LTS   5.4.0-1058-gcp   docker://20.10.7
+kube-worker2   Ready    <none>                 34d   v1.21.0   10.148.0.10   <none>        Ubuntu 18.04.5 LTS   5.4.0-1058-gcp   docker://20.10.7
+2.
+NAME                                READY   STATUS    RESTARTS   AGE   IP          NODE           NOMINATED NODE   READINESS GATES
+nginx-deployment-66b6c48dd5-6fv2p   1/1     Running   0          18m   10.38.0.2   kube-worker2   <none>           <none>
+nginx-deployment-66b6c48dd5-cw48l   1/1     Running   0          18m   10.40.0.2   kube-worker1   <none>           <none>
+
+NAME               READY   UP-TO-DATE   AVAILABLE   AGE   CONTAINERS   IMAGES         SELECTOR
+nginx-deployment   2/2     2            2           18m   nginx        nginx:1.14.2   app=nginx
+3.
+nginx-deployment   NodePort    10.96.27.38   <none>        80:31503/TCP   16m
+4.
+HTTP/1.1 200 OK
+Server: nginx/1.14.2
+Date: Sat, 11 Dec 2021 07:51:52 GMT
+Content-Type: text/html
+Content-Length: 612
+Last-Modified: Tue, 04 Dec 2018 14:44:49 GMT
+Connection: keep-alive
+ETag: "5c0692e1-264"
+Accept-Ranges: bytes
+
+Cau 2:
